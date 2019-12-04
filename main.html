@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" href="style.css">
         <title>cark's world</title>
+        
     </head>
     
     <body>
@@ -17,13 +18,15 @@
                 <li><a href="music.html">music</a></li>
                 <li><a href="top5.html">top 5s</a></li>
             </ul>
-            <button type="button"
-            onclick="document.getElementById('datelbl').innerHTML = Date()">
-Click me to display Date and Time.</button>
-            <p id="datelbl"></p>
+            <br>
+            
         </div>
         <div id="footer">
             <a class="goback"; href="above.html">go up</a>
+            <div>Date: <span id="datelbl"></span></div>
         </div>
+        <script>
+            document.getElementById('datelbl').innerHTML = Date();
+        </script>
     </body>
 </html>

@@ -1,6 +1,7 @@
 var http = require('http');
 var url = require('url');
 var fs = require('fs');
+var path = require('path');
 
 http.createServer(function (request, response) {
     
@@ -9,8 +10,13 @@ http.createServer(function (request, response) {
     if(pathname == '/'){
         pathname = '/main.html';
     }
-    
-    
+    //Deny requests for the server code
+    if(path.extname(pathname) == '.js'){
+        response.writeHead(404, {'Content-Type': 'text/html'});
+        response.end();
+        return;
+    }
+    //Grab the file and send it along, or 404 if not found
     fs.readFile(pathname.substr(1), function(err, data) {
         if (err) {
             console.log(err);
