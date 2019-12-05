@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+    <head>
+        
+        <link rel="icon" type="image/png" href="favicon.ico" sizes="16x16">
+        <link rel="stylesheet" href="style.css">
+        <title>the vicious cycle -- cark's world</title>
+    </head>
+    
+    <body>
+        
+        <div id="top">
+            <br><br><br><br><br><br>
+        </div>
+        
+        <div id="content">
+            <button id="incbtn" type="button">Get 1 Money</button>
+            <br>
+            <div id="moneylabel">Money: <span id="money">0</span></div>
+            <br><br>
+            <button id="inc2btn" type="button" style="visibility:hidden;">Increase Money Rate by 1</button>
+            <button id="inc3btn" type="button" style="visibility:hidden;">Increase "Increase Money Rate" Rate by 1</button>
+        </div>
+        
+        <div id="footer">
+            <a class="goback"; href="main.html">go up</a>
+        </div>
+        
+        <script>
+            function recalcButtonVis(){
+                if(money >= 200*(money_inc_inc)){
+                    document.getElementById("inc2btn").style.visibility = "visible";
+                    document.getElementById("inc3btn").style.visibility = "visible";
+                }else if(money >= 20){
+                    document.getElementById("inc2btn").style.visibility = "visible";
+                    document.getElementById("inc3btn").style.visibility = "hidden";
+                }else{
+                    document.getElementById("inc2btn").style.visibility = "hidden";
+                    document.getElementById("inc3btn").style.visibility = "hidden";
+                }
+            }
+            var money_inc = 1;
+            
+            var money = 0;
+            var money_inc_inc = 1;
+            document.getElementById("incbtn").onclick = function(){
+                money += money_inc;
+                document.getElementById("money").innerHTML = money;
+                recalcButtonVis();
+            };
+            
+            document.getElementById("inc2btn").onclick = function(){
+                //pay
+                money -= 20;
+                document.getElementById("money").innerHTML = money;
+                //inc inc
+                money_inc += money_inc_inc;
+                document.getElementById("incbtn").innerHTML = "Get "+money_inc+" Money";
+                //Hide buttons as nessessary
+                recalcButtonVis();
+            }
+            
+            document.getElementById("inc3btn").onclick = function(){
+                //pay
+                money -= 200*(money_inc_inc);
+                document.getElementById("money").innerHTML = money;
+                //inc inc inc
+                money_inc_inc += 1;
+                document.getElementById("inc2btn").innerHTML = "Increase Money Rate by " + money_inc_inc;
+                //Hide buttons as nessessary
+                recalcButtonVis();
+            }
+        </script>
+    </body>
+</html>
