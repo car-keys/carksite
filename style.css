@@ -33,7 +33,7 @@ a {
     font-size: 20px;
     padding-top: 10px;
     padding-bottom: 50px;
-    line-height: 1.7;
+    line-height: 1.5;
     
 }
 
@@ -45,6 +45,10 @@ a {
 
 .goback {
     color: rgb(145, 120, 218);
+}
+
+.blog_p {
+    margin-bottom: 40px;
 }
 
 .links_list{
