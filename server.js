@@ -22,9 +22,8 @@ http.createServer(function (request, response) {
         return request.end('Method not implemented');
     }
     
-    
     var pathname = url.parse(request.url, true).pathname;
-    //console.log("Request for " + pathname + " received.");
+    console.log("Request for " + pathname + " received. ");
     if(pathname == '/'){
         pathname = '/main.html';
     }
@@ -35,7 +34,6 @@ http.createServer(function (request, response) {
         response.end('Not found');
         return;
     }
-    console.log('requested ' + pathname);
     //Grab the file and send it along, or 404 if not found
     //TODO use pipes or somthing https://stackoverflow.com/questions/5823722/how-to-serve-an-image-using-nodejs
     var type = mime[path.extname(pathname).slice(1)] || 'text/plain';
